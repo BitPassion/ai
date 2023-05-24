@@ -32,9 +32,9 @@ pnpm install @vercel/ai-utils
 
 Creating UIs with contemporary AI providers is a daunting task. Ideally, language models/providers would be fast enough where developers could just fetch complete responses data with JSON in a few hundred milliseconds, but the reality is starkly different. It's quite common for these LLMs to take 5-40s to whip up a response.
 
-Instead of tormenting users with a seemingly endless loading spinner while these models conjure up responses or completions, the progressive approach involves streaming the text output to the frontend on the fly-—a tactic championed by OpenAI's ChatGPT. However, implementing this technique is easier said than done. Each AI provider has its own unique SDK, each has it's own envelope surrounding the tokens, and each with different metadata (whose usefulness varies drastically).
+Instead of tormenting users with a seemingly endless loading spinner while these models conjure up responses or completions, the progressive approach involves streaming the text output to the frontend on the fly-—a tactic championed by OpenAI's ChatGPT. However, implementing this technique is easier said than done. Each AI provider has its own unique SDK, each has its own envelope surrounding the tokens, and each with different metadata (whose usefulness varies drastically).
 
-Many AI utility helpers so far in the JS ecosystem tend to overcomplicate things with unnecessary magic tricks, excess levels of indirection, lossy abstractions. Here's where Vercel AI Utils comes to the rescue—a compact library designed to alleviate the headaches of constructing streaming text UIs by taking care of the most annoying parts and then getting out of your way:
+Many AI utility helpers so far in the JS ecosystem tend to overcomplicate things with unnecessary magic tricks, excess levels of indirection, and lossy abstractions. Here's where Vercel AI Utils comes to the rescue—**a compact library designed to alleviate the headaches of constructing streaming text UIs** by taking care of the most annoying parts and then getting out of your way:
 
 - Diminish the boilerplate necessary for handling streaming text responses
 - Guarantee the capability to run functions at the Edge
@@ -100,10 +100,7 @@ Create a Next.js Route Handler that uses the Edge Runtime that we'll use to gene
 ```tsx
 // ./app/api/generate/route.ts
 import { Configuration, OpenAIApi } from 'openai-edge';
-import { 
-  OpenAITextStream, 
-  StreamingTextResponse 
-} from '@vercel/ai-utils';
+import { OpenAITextStream, StreamingTextResponse } from '@vercel/ai-utils';
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
